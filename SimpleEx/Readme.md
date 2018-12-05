@@ -1,0 +1,1 @@
+Simple demonstration of let and const using javascript objects and functions
