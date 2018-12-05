@@ -21,3 +21,10 @@ const simpleSumsObj = {
   simpleSumsObj.combinedResult(10)
   simpleSumsObj.combinedResult(4)
   simpleSumsObj.combinedResult(3)
+
+
+
+  let points = 60;
+  console.log("points", points);
+   points = 50;
+  console.log("only points", points);
