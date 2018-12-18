@@ -1,7 +1,6 @@
-
-var width, prgbarNumber, limit;
-var url = "http://pb-api.herokuapp.com/bars";
-var xmlhttpObject = new XMLHttpRequest();
+let width, prgbarNumber, limit;
+const url = "http://pb-api.herokuapp.com/bars";
+const xmlhttpObject = new XMLHttpRequest();
 xmlhttpObject.open("GET", url);
 xmlhttpObject.send();
 xmlhttpObject.addEventListener("load", function(e) {
@@ -15,7 +14,7 @@ xmlhttpObject.addEventListener("load", function(e) {
 
   // to crete ProgressBars
   for (let j = 0; j < progressBarValueArray.length; j++) {
-    var pr = document.createElement("div");
+    let pr = document.createElement("div");
     pr.setAttribute("id", j + 1);
     pr.classList.add("myProgress", "space");
     pr.style.width = progressBarValueArray[j] + "%";
@@ -49,16 +48,23 @@ xmlhttpObject.addEventListener("load", function(e) {
     let currentSelection = document.querySelector("select").value;
     let currentPBValue = parseInt(progressBarValueArray[currentSelection - 1]);
     let newPBValue = currentPBValue + parseInt(value);
-    progressBarValueArray[currentSelection - 1] = newPBValue;
     let currentActiveBar = document.getElementById(currentSelection);
-    if (newPBValue >= limit) {
+    if (newPBValue > limit) {
       currentActiveBar.style.width = limit + "%";
       currentActiveBar.innerHTML = limit + "%";
       currentActiveBar.className = "red-bar space";
+      progressBarValueArray[currentSelection -1] = limit;
     } else if (newPBValue <= 0) {
       currentActiveBar.style.width = 0 + "%";
       currentActiveBar.innerHTML = 0 + "%";
-    } else {
+      progressBarValueArray[currentSelection -1] = 0;
+    } else if (newPBValue >= 0) {
+      progressBarValueArray[currentSelection - 1] = newPBValue;
+      currentActiveBar.style.width = newPBValue + "%";
+      currentActiveBar.innerHTML = newPBValue + "%";
+      currentActiveBar.className = "myProgress space";
+    } else if( newPBValue = limit){
+      progressBarValueArray[currentSelection - 1] = newPBValue;
       currentActiveBar.style.width = newPBValue + "%";
       currentActiveBar.innerHTML = newPBValue + "%";
       currentActiveBar.className = "myProgress space";
