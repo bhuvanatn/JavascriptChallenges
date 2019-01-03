@@ -1,7 +1,7 @@
 let width, prgbarNumber, limit;
 const url = "http://pb-api.herokuapp.com/bars";
 const xmlhttpObject = new XMLHttpRequest();
-xmlhttpObject.open("GET", url);
+xmlhttpObject.open("GET", url, true);
 xmlhttpObject.send();
 xmlhttpObject.addEventListener("load", function(e) {
   let response = JSON.parse(e.target.response);
